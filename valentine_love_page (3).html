@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Baby ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    overflow-x: hidden;
+    color: white;
+    text-align: center;
+}
+
+/* Intro Screen */
+#intro {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
+}
+
+#intro button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    background: #ff4e8a;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#intro button:hover {
+    background: #ff2e70;
+}
+
+/* Password Screen */
+#passwordScreen {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #111;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9998;
+}
+
+#passwordScreen input {
+    padding: 12px;
+    border-radius: 20px;
+    border: none;
+    margin-top: 15px;
+}
+
+#passwordScreen button {
+    margin-top: 15px;
+    padding: 10px 25px;
+    border-radius: 20px;
+    border: none;
+    background: #ff4e8a;
+    color: white;
+    cursor: pointer;
+}
+
+.container {
+    padding: 40px 20px;
+    display: none;
+}
+
+.photo-section {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.photo-section img {
+    width: 250px;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    transition: transform 0.4s ease;
+}
+
+.photo-section img:hover {
+    transform: scale(1.05);
+}
+
+.card {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    padding: 50px;
+    border-radius: 25px;
+    max-width: 900px;
+    margin: auto;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+}
+
+p {
+    font-size: 1.3rem;
+    line-height: 2;
+    white-space: pre-line;
+}
+
+.heart {
+    font-size: 2.5rem;
+    margin-top: 30px;
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+}
+
+/* Floating Hearts */
+.floating-heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 20px;
+    animation: floatUp 8s linear infinite;
+    color: #ff4e8a;
+}
+
+@keyframes floatUp {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(-100vh); opacity: 0; }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Intro -->
+<div id="intro">
+    <h1 style="color:white;">❤️ Click To Open My Heart ❤️</h1>
+    <button onclick="showPassword()">Open</button>
+</div>
+
+<!-- Password -->
+<div id="passwordScreen">
+    <h2>Enter Our Special Password 💕</h2>
+    <input type="password" id="passwordInput" placeholder="Enter password">
+    <button onclick="checkPassword()">Unlock</button>
+</div>
+
+<!-- Main Content -->
+<div class="container" id="mainContent">
+
+<div class="photo-section">
+    <img src="IMG_1594.JPG" alt="Her">
+    <img src="IMG_1291.JPG" alt="Us">
+    <img src="IMG_0937.JPG" alt="Mirror">
+</div>
+
+<div class="card">
+<h1>Baby… ❤️</h1>
+<p>
+I just want to say something from my heart.
+I love you so much. More than I can even explain in words.
+
+Maybe I’m not the perfect man.
+Maybe I’m not the best in everything.
+But trust me on one thing… no one in this world can ever love you more than I do.
+
+My mornings start with you.
+My days are about you.
+My evenings feel complete because of you.
+And my nights end thinking about you.
+
+I’m not here to show off.
+I’m not here to impress anyone.
+I’m here to tell you the truth — I love you deeply, honestly, and endlessly.
+
+Maybe we’re not married yet…
+But in my heart, you are already my wife.
+You’re not just my girlfriend.
+You are my partner, my peace, my happiness, my safe place.
+
+You’re not just a part of my life…
+You are my whole life.
+
+No matter what happens, no matter where life takes us,
+my love for you will always stay the same — strong, loyal, and forever.
+
+I love you so much, baby. ❤️
+</p>
+<div class="heart">❤️</div>
+</div>
+
+</div>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function showPassword() {
+    document.getElementById('intro').style.display = 'none';
+    document.getElementById('passwordScreen').style.display = 'flex';
+}
+
+function checkPassword() {
+    var password = document.getElementById('passwordInput').value;
+    if(password === "iloveyou") {   // CHANGE PASSWORD HERE
+        document.getElementById('passwordScreen').style.display = 'none';
+        document.getElementById('mainContent').style.display = 'block';
+        document.getElementById('bgMusic').play();
+        startHearts();
+    } else {
+        alert("Wrong password baby 💔");
+    }
+}
+
+function startHearts() {
+    setInterval(function() {
+        var heart = document.createElement('div');
+        heart.classList.add('floating-heart');
+        heart.innerHTML = '❤️';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+        heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+        document.body.appendChild(heart);
+        setTimeout(() => { heart.remove(); }, 8000);
+    }, 500);
+}
+</script>
+
+</body>
+</html>
